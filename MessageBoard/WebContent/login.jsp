@@ -8,7 +8,7 @@
 <title>登录</title>
 </head>
 <body>
-	<form>
+	<form method="post" action="test">
 		<div id="loginInfo">
 			<div id="inner" >
 				<label>用户名：</label> <input type="text" name="username" />
