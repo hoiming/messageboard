@@ -1,7 +1,13 @@
 package com.haiming.messageboard.bean;
 
+import com.haiming.messageboard.annotation.Column;
+import com.haiming.messageboard.annotation.Entity;
+
+@Entity("user")
 public class User {
+	@Column("name")
 	private String username;
+	@Column("job")
 	private String password;
 	
 	public User(String username, String password) {
