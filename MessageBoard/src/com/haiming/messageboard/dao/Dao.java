@@ -1,5 +1,8 @@
 package com.haiming.messageboard.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import com.haiming.messageboard.bean.Page;
 
 /**
@@ -7,9 +10,13 @@ import com.haiming.messageboard.bean.Page;
  * @author Haiming-Liang
  *
  */
-public interface Dao<T> {
+public interface Dao<T>   {
 	//分页查询,返回下一页的内容
 	Page getNextPage(int currPageIndex,String sql);
-	T queryOneRecord(String sql);
+	//查询一条记录
+	T  queryOneRecord(String sql,Class clazz);
+	void save(T t) throws Exception;
+	void update(T t);
+	List<T> findAllByConditions(Map<String,Object> sqlWhere,Class clazz);
 
 }
