@@ -14,9 +14,10 @@ public interface Dao<T>   {
 	//分页查询,返回下一页的内容
 	Page getNextPage(int currPageIndex,String sql);
 	//查询一条记录
-	T  queryOneRecord(String sql,Class clazz);
+	T  get(Object id,Class<T> clazz) throws Exception;
 	void save(T t) throws Exception;
-	void update(T t);
-	List<T> findAllByConditions(Map<String,Object> sqlWhere,Class clazz);
+	void update(T t) throws Exception;
+	void delete(Object id,Class<T> clazz) throws Exception;
+	List<T> findAllByConditions(Map<String,Object> sqlWhere,Class<T> clazz) throws Exception;
 
 }
