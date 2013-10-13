@@ -5,7 +5,7 @@ import com.haiming.messageboard.annotation.Entity;
 import com.haiming.messageboard.annotation.Id;
 
 @Entity("user")
-public class User {
+public class User  {
 	@Id("id")
 	private int id;
 	@Column("username")
@@ -44,6 +44,12 @@ public class User {
 	}
 	public String toString(){ 
 		return "User: " + id + " " + username +" " + password;
+	}
+	 
+	public boolean equals(User u){ 
+		if(   username.equals(u.getUsername()) && password.equals(u.getPassword()))
+			return true;
+		return false;
 	}
 
 }
