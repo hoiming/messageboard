@@ -15,6 +15,8 @@ public interface Dao<T>   {
 	Page getNextPage(int currPageIndex,String sql);
 	//查询一条记录
 	T  get(Object id,Class<T> clazz) throws Exception;
+	//不根据ID查询记录
+	T getWithoutID(Object obj,Class<T> clazz) throws Exception;
 	void save(T t) throws Exception;
 	void update(T t) throws Exception;
 	void delete(Object id,Class<T> clazz) throws Exception;
