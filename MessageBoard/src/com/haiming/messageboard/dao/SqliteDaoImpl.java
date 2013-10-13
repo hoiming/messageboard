@@ -389,4 +389,32 @@ public class SqliteDaoImpl<T> implements Dao<T> {
 		System.out.println(sql + "\n" + clazz.getSimpleName() + "删除成功！");
 
 	}
+
+	@Override
+	public T getWithoutID(Object obj, Class<T> clazz) throws Exception {
+		String fieldName = "";
+		Object fieldValue;
+		Field[] fields = clazz.getDeclaredFields();
+		Map<String, Object> sqlWhereMap = new HashMap<String, Object>();
+		 
+		boolean flag = false;
+		for (Field field : fields) {
+			if (field.isAnnotationPresent(Column.class)) {
+				fieldName = field.getAnnotation(Column.class).value();
+				PropertyDescriptor pd = new PropertyDescriptor(fieldName,clazz);
+				fieldValue = pd.getReadMethod().invoke(obj);
+				sqlWhereMap.put(fieldName, fieldValue);
+				flag = true;
+				
+			}
+		}
+		if (!flag) {
+			throw new NotFoundAnnotationException(clazz.getName()
+					+ " object not found column property.");
+		}
+		// 拼装SQL
+		
+		List<T> list = findAllByConditions(sqlWhereMap, clazz);
+		return list.size() > 0 ? list.get(0) : null;
+	}
 }
