@@ -7,7 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DaoUtils {
-	private static final String url="jdbc:sqlite:test.db";
+	//这里要使用完整路径
+	private static final String url="jdbc:sqlite:F:/GitRepo/messageboard/MessageBoard/test.db";
 	private static final String className = "org.sqlite.JDBC";
 	private static Connection conn = null;
 	
