@@ -7,7 +7,9 @@
 <title>留言板</title>
 </head>
 <body>
-username is ${user.username }<br/>
-password is ${user.password }
+<%@ include file="top.jsp" %>
+<%@ include file="middle.jsp" %>
+<%@ include file="bottom.jsp"%>
+<label>哈哈哈哈哈</label>
 </body>
 </html>
